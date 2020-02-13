@@ -17,16 +17,14 @@
   background-color: #cccc;
   display: flex;
   align-items: flex-end;
+  justify-content: flex-start;
 }
 
 .barsContainer .bar:nth-child(even) {
-  height: 50px;
-  width: 30px;
   background-color: blue;
 }
 
 .bar {
-  height: 80px;
   width: 30px;
   background-color: red;
 }
