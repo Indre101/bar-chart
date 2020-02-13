@@ -37,7 +37,6 @@
   opacity: 0;
   width: 40px;
   animation: enter 1s linear forwards 1;
-  transform: translateX(40px);
 }
 
 .bar[data-position="older"],
