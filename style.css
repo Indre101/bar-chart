@@ -1,0 +1,32 @@
+:root {
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.barsContainer {
+  height: 60vh;
+  width: 70vw;
+  background-color: #cccc;
+  display: flex;
+  align-items: flex-end;
+}
+
+.barsContainer .bar:nth-child(even) {
+  height: 50px;
+  width: 30px;
+  background-color: blue;
+}
+
+.bar {
+  height: 80px;
+  width: 30px;
+  background-color: red;
+}
