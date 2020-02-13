@@ -4,7 +4,7 @@ const barsContainer = document.querySelector(".barsContainer");
 let bars = Array.from(document.querySelectorAll(".bar"));
 
 function getNumbers() {
-  return Math.floor(Math.random() * 31);
+  return Math.floor(Math.random() * 32);
 }
 
 function createNewElements(element) {
@@ -23,13 +23,19 @@ function createNewElements(element) {
   newDiv.appendChild(modal);
   modal.classList.add("modal");
   modal.textContent = `${element}`;
-  barsContainer.prepend(newDiv);
+
+  if (element === 31) {
+    newDiv.dataset.position = "highest";
+  } else if (element == 1) {
+    newDiv.dataset.position = "lowest";
+  }
+  barsContainer.appendChild(newDiv);
 }
 
 function changeBackGround(arr) {
   arr.forEach(element => {
-    if (arr.indexOf(element) >= 30) {
-      element.dataset.time = "older";
+    if (arr.indexOf(element) <= 10 && arr.length >= 31) {
+      element.dataset.position = "older";
     }
   });
 }
@@ -42,11 +48,12 @@ function addNewBars() {
     counter++;
     createNewElements(getNumbers());
     changeBackGround(bars);
-    if (counter >= 41) {
-      barsContainer.removeChild(barsContainer.lastElementChild);
-    }
     addNewBars();
-  }, 500);
+
+    if (counter >= 41) {
+      barsContainer.removeChild(barsContainer.firstElementChild);
+    }
+  }, 1000);
 }
 
 addNewBars();
