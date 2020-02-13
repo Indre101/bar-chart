@@ -11,10 +11,9 @@ function createNewElements(element) {
   const newDiv = document.createElement("div");
   newDiv.classList.add("bar");
   newDiv.style.setProperty("--height", element);
-
+  newDiv.dataset.heights = element;
   const modal = document.createElement("div");
   newDiv.onmouseover = function() {
-    console.log("object");
     modal.dataset.show = "true";
   };
   newDiv.onmouseout = function() {
@@ -29,10 +28,11 @@ function createNewElements(element) {
   } else if (element == 1) {
     newDiv.dataset.position = "lowest";
   }
+
   barsContainer.appendChild(newDiv);
 }
 
-function changeBackGround(arr) {
+function changeToOldDataBackground(arr) {
   arr.forEach(element => {
     if (arr.indexOf(element) <= 10 && arr.length >= 31) {
       element.dataset.position = "older";
@@ -47,7 +47,7 @@ function addNewBars() {
   setTimeout(() => {
     counter++;
     createNewElements(getNumbers());
-    changeBackGround(bars);
+    changeToOldDataBackground(bars);
     addNewBars();
 
     if (counter >= 41) {
