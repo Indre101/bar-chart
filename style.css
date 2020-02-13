@@ -15,18 +15,21 @@
 .barsContainer {
   height: 60vh;
   width: 70vw;
-  background-color: #cccc;
+  background-color: #cccccc73;
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
 }
 
-.barsContainer .bar:nth-child(even) {
-  background-color: blue;
-}
+
 
 .bar {
   width: 30px;
   height: calc(var(--height) * 1vw);
-  background-color: red;
+  background-image: linear-gradient(to right, #1b29cade, #08963485);
+  transition: height 1s;
+}
+
+.bar[data-time="older"] {
+  background-image: linear-gradient(to right, #4e4e4ede, #afcab885);
 }

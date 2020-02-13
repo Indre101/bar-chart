@@ -1,40 +1,40 @@
 "use strict";
 
-let barsContainer = document.querySelector(".barsContainer");
+const barsContainer = document.querySelector(".barsContainer");
+let bars = Array.from(document.querySelectorAll(".bar"));
 
 function getNumbers() {
   return Math.floor(Math.random() * 31);
 }
 
-let visitorsNumbers = [];
-
 for (let index = 0; index <= 40; index++) {
-  visitorsNumbers.push(getNumbers());
-  console.log(index);
-  // index == 40 ? (index = 39) : false;
+  createNewElements(getNumbers());
 }
-
-function createNewDivsForArrelements() {
-  visitorsNumbers.forEach(e => {
-    createNewElements(e);
-  });
-}
-createNewDivsForArrelements();
 
 function createNewElements(element) {
   const newDiv = document.createElement("div");
   newDiv.classList.add("bar");
   newDiv.style.setProperty("--height", element);
-  barsContainer.appendChild(newDiv);
+  barsContainer.prepend(newDiv);
 }
 
-// function addNewBars() {
-//   setTimeout(() => {
-//     // visitorsNumbers.push(getNumbers());
-//     createNewElements(getNumbers());
+function changeBackGround(arr) {
+  arr.forEach(element => {
+    if (arr.indexOf(element) >= 30) {
+      element.dataset.time = "older";
+    }
+    console.log(arr.indexOf(element));
+  });
+}
 
-//     addNewBars();
-//   }, 1000);
-// }
+function addNewBars() {
+  bars = Array.from(document.querySelectorAll(".bar"));
+  setTimeout(() => {
+    barsContainer.removeChild(barsContainer.lastElementChild);
+    createNewElements(getNumbers());
+    changeBackGround(bars);
+    addNewBars();
+  }, 1000);
+}
 
-// addNewBars();
+addNewBars();
