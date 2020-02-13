@@ -1,6 +1,7 @@
 :root {
   padding: 0;
   margin: 0;
+  --height: 30;
 }
 
 .container {
@@ -26,5 +27,6 @@
 
 .bar {
   width: 30px;
+  height: calc(var(--height) * 1vw);
   background-color: red;
 }

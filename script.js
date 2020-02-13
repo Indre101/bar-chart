@@ -9,9 +9,9 @@ function getNumbers() {
 let visitorsNumbers = [];
 
 for (let index = 0; index <= 40; index++) {
-  // visitorsNumbers.push(getNumbers());
+  visitorsNumbers.push(getNumbers());
   console.log(index);
-  index == 40 ? (index = 39) : false;
+  // index == 40 ? (index = 39) : false;
 }
 
 function createNewDivsForArrelements() {
@@ -19,21 +19,22 @@ function createNewDivsForArrelements() {
     createNewElements(e);
   });
 }
+createNewDivsForArrelements();
 
 function createNewElements(element) {
   const newDiv = document.createElement("div");
   newDiv.classList.add("bar");
-  newDiv.style.height = `${element}vw`;
+  newDiv.style.setProperty("--height", element);
   barsContainer.appendChild(newDiv);
 }
 
-function addNewBars() {
-  setTimeout(() => {
-    // visitorsNumbers.push(getNumbers());
-    createNewElements(getNumbers());
+// function addNewBars() {
+//   setTimeout(() => {
+//     // visitorsNumbers.push(getNumbers());
+//     createNewElements(getNumbers());
 
-    addNewBars();
-  }, 1000);
-}
+//     addNewBars();
+//   }, 1000);
+// }
 
-addNewBars();
+// addNewBars();
