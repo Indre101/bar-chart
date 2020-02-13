@@ -7,14 +7,22 @@ function getNumbers() {
   return Math.floor(Math.random() * 31);
 }
 
-for (let index = 0; index <= 40; index++) {
-  createNewElements(getNumbers());
-}
-
 function createNewElements(element) {
   const newDiv = document.createElement("div");
   newDiv.classList.add("bar");
   newDiv.style.setProperty("--height", element);
+
+  const modal = document.createElement("div");
+  newDiv.onmouseover = function() {
+    console.log("object");
+    modal.dataset.show = "true";
+  };
+  newDiv.onmouseout = function() {
+    modal.dataset.show = "";
+  };
+  newDiv.appendChild(modal);
+  modal.classList.add("modal");
+  modal.textContent = `${element}`;
   barsContainer.prepend(newDiv);
 }
 
@@ -23,18 +31,22 @@ function changeBackGround(arr) {
     if (arr.indexOf(element) >= 30) {
       element.dataset.time = "older";
     }
-    console.log(arr.indexOf(element));
   });
 }
+
+let counter = 0;
 
 function addNewBars() {
   bars = Array.from(document.querySelectorAll(".bar"));
   setTimeout(() => {
-    barsContainer.removeChild(barsContainer.lastElementChild);
+    counter++;
     createNewElements(getNumbers());
     changeBackGround(bars);
+    if (counter >= 41) {
+      barsContainer.removeChild(barsContainer.lastElementChild);
+    }
     addNewBars();
-  }, 1000);
+  }, 500);
 }
 
 addNewBars();

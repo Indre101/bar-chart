@@ -27,9 +27,36 @@
   width: 30px;
   height: calc(var(--height) * 1vw);
   background-image: linear-gradient(to right, #1b29cade, #08963485);
-  transition: height 1s;
+  transition: all 1s;
+  animation: enter 2s 1s infinite;
+  align-items: center;
+
 }
 
 .bar[data-time="older"] {
   background-image: linear-gradient(to right, #4e4e4ede, #afcab885);
+}
+
+.animation-bar {
+  animation: enter 2s infinite;
+
+}
+
+
+@keyframes enter {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.modal {
+  display: none;
+}
+
+.modal[data-show="true"] {
+  display: block;
+  font-size: 1rem;
+  writing-mode: vertical-rl;
+  margin: 1vw 0;
+  color: white;
 }
